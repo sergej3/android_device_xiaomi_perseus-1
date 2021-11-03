@@ -9,6 +9,11 @@
 
 DEVICE_PATH := device/xiaomi/perseus
 
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := perseus
 
@@ -39,3 +44,14 @@ TARGET_USES_NQ_NFC := true
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/perseus/BoardConfigVendor.mk
+
+
+# Verified Boot
+BOARD_AVB_ENABLE := true
+ifeq ($(BOARD_AVB_ENABLE), true)
+   BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
+   BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+   BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
+   BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
+   BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+endif
