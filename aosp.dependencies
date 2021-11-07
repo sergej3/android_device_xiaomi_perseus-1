@@ -1,6 +1,6 @@
 [
   {
-    "repository": "android_device_xiaomi_sdm845-common",
+    "repository": "android_device_xiaomi_sdm845-common-1",
     "target_path": "device/xiaomi/sdm845-common"
   }
 ]
